@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Hours Predictor</title>
+</head>
+<body>
+    <h1>Predict Grade Based on Study Hours</h1>
+    <form method="post">
+        <label>Study Hours:</label>
+        <input type="text" name="study_hours" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction is not none %}
+        <h2>Predicted Grade: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>

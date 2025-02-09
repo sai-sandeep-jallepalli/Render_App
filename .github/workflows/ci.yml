@@ -1,0 +1,22 @@
+name: Store Flask ML App in GitHub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  store-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Verify file structure
+        run: ls -la
+
+      - name: Ensure Dockerfile exists
+        run: test -f Dockerfile && echo "Dockerfile exists" || exit 1
+
+      - name: Run pre-deploy checks
+        run: chmod +x scripts/pre_deploy_check.sh && ./scripts/pre_deploy_check.sh
